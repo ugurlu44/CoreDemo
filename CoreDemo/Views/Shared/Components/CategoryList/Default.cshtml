@@ -1,0 +1,12 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Category>
+<h4>Categories</h4>
+<ul class="list-group single">
+    @foreach (var item in Model.Where(x=>x.CategoryStatus==true))
+    {
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        @item.CategoryName
+        <span class="badge badge-primary badge-pill">3</span>
+    </li>
+    }
+   
+</ul>

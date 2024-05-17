@@ -1,0 +1,55 @@
+﻿@* @using EntityLayer.Concrete
+@model List<Blog> *@
+@model IEnumerable<EntityLayer.Concrete.Blog>
+    
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<script>
+    function confirmDelete() {
+        if (confirm("Silmek istediğinizden emin misiniz?")) {
+            return true; // Silme işlemine izin ver
+        } else {
+            return false; // Silme işlemini iptal et
+        }
+    }
+</script>
+
+<h1>Yazarın Blogları</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Blog Başlığı</th>
+        <th>Oluşturma Tarihi</th>
+        <th>Kategori</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.BlogID</td>
+        <td>@item.BlogTitle</td>
+        <td>@item.BlogCreateDate.ToString("dd-MMM-yyyy")</td>
+        <td>@item.Category.CategoryName</td>
+        @if (@item.BlogStatus==true)
+            {
+                <td>Aktif</td>
+            }
+        else 
+            {
+                <td>Pasif</td>
+            }
+        
+            <td><a href="/Blog/BlogDelete/@item.BlogID" class="btn btn-danger" onclick="return confirmDelete()">Sil</a></td>
+            <td><a href="/Blog/BlogEdit/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
+    </tr>
+    }
+
+</table>
+<a href="/Blog/BlogAdd/" class="btn btn-primary" style="max-width:fit-content;" >Yeni Blog Oluştur</a>
+

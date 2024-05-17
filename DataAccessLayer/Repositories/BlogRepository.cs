@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,11 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
         }
 
+        public void Delete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteBlog(Blog blog)
         {
             c.Remove(blog);
@@ -29,9 +35,44 @@ namespace DataAccessLayer.Repositories
             return c.Blogs.Find(id);
         }
 
+        public List<Blog> GetListAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Blog> GetListAll(Expression<Func<Blog, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Blog> GetListWithCategory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Blog> GetListWithCategoryAndWriter()
+        {
+            return c.Blogs.ToList();
+        }
+
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            return c.Blogs.Where(x=>x.WriterID == id).ToList();
+        }
+
+        public void Insert(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Blog> ListAllBlog()
         {
             return c.Blogs.ToList();
+        }
+
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateBlog(Blog blog)

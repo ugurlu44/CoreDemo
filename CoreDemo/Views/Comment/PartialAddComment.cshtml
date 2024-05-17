@@ -1,0 +1,15 @@
+﻿<div class="comment-top">
+    <h4>Yorum Ekle</h4>
+    @*name kısımlarına Veritabanındaki kolonAdlarını veriyoruz*@
+    <div class="comment-bottom">
+        @*kodun çalışması için action üzerinden kendisine yönlendirme yapıyoruz*@
+        <form action="/Comment/PartialAddComment/" method="post">
+            <input class="form-control" type="text" name="CommentUserName" placeholder="Adınız Soyadınız" required="">
+            <input class="form-control" type="text" name="CommentTitle" placeholder="Yorum başlık" required="">
+
+
+            <textarea class="form-control" name="CommentContent" placeholder="Yorumunuz..." required=""></textarea>
+            <button id="AddComment" type="submit" class="btn btn-primary submit">Ekle</button>
+        </form>
+    </div>
+</div>
