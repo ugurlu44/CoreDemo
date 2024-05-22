@@ -16,11 +16,26 @@ namespace BusinessLayer.Concrete
         public WriterManager(IWriterDal writerDal)
         {
             _writerDal = writerDal;
+        }        
+
+        public void Insert(Writer t)
+        {
+            _writerDal.Insert(t);
         }
 
-        public void WriterAdd(Writer writer)
+        public void Update(Writer t)
         {
-            _writerDal.Insert(writer);
+            _writerDal.Update(t);
+        }
+
+        public void Delete(Writer t)
+        {
+            _writerDal.Delete(t);
+        }
+
+        public Writer TGetById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Writer> GetList()
@@ -28,6 +43,9 @@ namespace BusinessLayer.Concrete
             return _writerDal.GetListAll();
         }
 
-        
+        public List<Writer> GetWriterByID(int id)
+        {
+            return _writerDal.GetListAll(x => x.WriterID == id);
+        }
     }
 }

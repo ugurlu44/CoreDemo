@@ -49,7 +49,7 @@ namespace CoreDemo.Controllers
                 writer.WriterStatus = true;
                 writer.WriterAbout = "deneme test";
                 writer.WriterImage = "test";
-                wm.WriterAdd(writer);
+                wm.Insert(writer);
                 return RedirectToAction("Index","Blog");
                 //kaydedilmiştir.
             }

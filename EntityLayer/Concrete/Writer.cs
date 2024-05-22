@@ -19,6 +19,7 @@ namespace EntityLayer.Concrete
         public string WriterPassword { get; set; }
 
         //[Compare("WriterPassword", ErrorMessage = "Şifreler uyuşmuyor")]
+
         [NotMapped]
         public string ConfirmPassword { get; set; }
         public bool WriterStatus { get; set; }
