@@ -29,10 +29,14 @@
         <th>Düzenle</th>
 
     </tr>
+    @{
+    int i = 1;
+    }
     @foreach (var item in Model)
     {
-    <tr>
-        <td>@item.BlogID</td>
+        
+        <tr>
+        <td>@i</td>
         <td>@item.BlogTitle</td>
         <td>@item.BlogCreateDate.ToString("dd-MMM-yyyy")</td>
         <td>@item.Category.CategoryName</td>
@@ -47,7 +51,8 @@
         
             <td><a href="/Blog/BlogDelete/@item.BlogID" class="btn btn-danger" onclick="return confirmDelete()">Sil</a></td>
             <td><a href="/Blog/BlogEdit/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
-    </tr>
+        </tr>
+        i += 1;
     }
 
 </table>

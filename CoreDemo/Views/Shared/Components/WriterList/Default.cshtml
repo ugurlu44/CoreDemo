@@ -1,10 +1,9 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Writer>
+﻿@* @model IEnumerable<EntityLayer.Concrete.Writer> *@
 
 <div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-    @foreach (var item in Model.Where(x=>x.WriterID==1))
-    {
-        <span>Hoşgeldin @item.WriterName</span>
-    }
+
+    <span>Hoşgeldin @ViewBag.Username</span>
+    
 
 
 

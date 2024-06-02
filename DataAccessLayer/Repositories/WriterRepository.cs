@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Abstract
+namespace DataAccessLayer.Repositories
 {
-    public interface IWriterDal : IGenericDal<Writer>
+    public class WriterRepository : GenericRepository<Writer>
     {
-
     }
 }

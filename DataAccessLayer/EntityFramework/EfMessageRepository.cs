@@ -11,8 +11,14 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfWriterRepository : GenericRepository<Writer> ,IWriterDal
+    public class EfMessageRepository : GenericRepository<Message2>, IMessageDal
     {
-        
+        public List<Message2> GetListWithMessageByWriter(int id)
+        {
+            using (var c = new Context())
+            {
+                return c.Message2s.Include(x => x.SenderUser).Where(x => x.RecieverID == id).ToList();
+            }
+        }
     }
 }
