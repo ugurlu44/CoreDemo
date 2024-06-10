@@ -54,10 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             Başlık
                         </h3>
                         <p>
-                            @foreach (var item in Model)
-                            {
-                                @item.AboutDetails1
-                            }
+                            @Model.FirstOrDefault().AboutDetails1
                         </p>
                         
                         <a href="single.html" class="btn btn-primary read-m">Read More</a>

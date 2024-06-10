@@ -22,13 +22,13 @@ namespace CoreDemo.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        Context c = new Context();
         //[AllowAnonymous]
         [Authorize]
         public IActionResult Index()
         {
             var usermail = User.Identity.Name;
-            ViewBag.Usermail = usermail;
-            Context c = new Context();
+            ViewBag.Usermail = usermail;            
             var username = c.Writers.Where(x=>x.WriterMail==usermail).Select(y=>y.WriterName).FirstOrDefault();
             ViewBag.Username = username;
             return View();
@@ -61,14 +61,16 @@ namespace CoreDemo.Controllers
             return PartialView();
         }
 
-        [AllowAnonymous]
+        
         [HttpGet]
         public IActionResult WriterEditProfil() 
         {
-            var values = wm.TGetById(1);
+            var usermail = User.Identity.Name;
+            var writerID = c.Writers.Where(x=>x.WriterMail==usermail).Select(y=> y.WriterID).FirstOrDefault();
+            var values = wm.TGetById(writerID);
             return View(values);
         }
-        [AllowAnonymous]
+        
         [HttpPost]
         public IActionResult WriterEditProfil(Writer writer) 
         {
